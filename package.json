@@ -1,0 +1,21 @@
+{
+  "name": "bh-currency-converter",
+  "version": "1.0.0",
+  "description": "this app will converts currencies and show charts.",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "bahare nikoosiyar",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.4.0",
+    "parcel": "^2.4.0"
+  },
+  "dependencies": {
+    "chart.js": "^3.7.1",
+    "chartjs-chart-error-bars": "^3.7.1",
+    "sass": "^1.49.9"
+  }
+}

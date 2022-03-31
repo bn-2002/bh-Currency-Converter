@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/sass/main.scss" />
+    <!-- <link rel="stylesheet" href="./css/main.css" /> -->
+    <script defer type="module" src="src/js/controller.js"></script>
+    <link rel="icon" type="image/x-icon" href="src/images/favicon.png" />
+    <title>BH Currency Convereter</title>
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="error-message-container hidden">
+        <img class="close-btn" alt="" src="https://img.icons8.com/small/16/000000/delete-sign.png"/>
+        <span class="error-message">There is might be a problem with your internet connection!</span>
+      </div>
+
+      <section class="section1 currency-converter-section">
+        <header>
+          <h1>Use Currency Converter to easily convert currencies.</h1>
+          <div class="current-date-and-time">
+            <p class="current-date">September 19 2022</p>
+            <p class="current-time">17:31</p>
+          </div>
+        </header>
+
+        <div class="currency-converter">
+          <div class="field i-field">
+            <span>You Have</span>
+            <input class="input-field input-amount-field" value="" type="number" autofocus/>
+          </div>
+
+          <div class="field currencies-list">
+            <div class="dropdown">
+              <span></span>
+
+              <div class="dropbtn dropbtn-input" href="#">
+                <img
+                  alt=""
+                  src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg"
+                />
+                <span>BTC</span>
+              </div>
+
+              <div data-type="0" class="dropdown-content dropdown-content-input">
+
+                <input class="search-box search-input-currency" placeholder="search..." type="text" autofocus/>
+
+                <!-- <div class="dropdown-content-item" href="#">
+                <img alt="" src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg">
+                <span>BTC</span>
+                </div> -->
+
+              </div>
+            </div>
+          </div>
+
+          <div class="field o-field">
+            <span>You Get</span>
+            <div class="input-field output-amount-field result-field">
+            </div>
+          </div>
+
+          <div class="field currencies-list">
+            <div class="dropdown">
+              <span></span>
+
+              <div class="dropbtn dropbtn-output" href="#">
+                <img
+                  alt=""
+                  src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/usdt.svg"
+                />
+                <span>USDT</span>
+              </div>
+
+              <div data-type="1" class="dropdown-content dropdown-content-output">
+
+                <input
+                  class="search-box search-output-currency"
+                  placeholder="search..."
+                  type="text"
+                  autofocus
+                />
+
+                <!-- <div class="dropdown-content-item" href="#">
+                <img alt="" src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg">
+                <span>BTC</span>
+                </div>   -->
+
+              </div>
+            </div>
+          </div>
+
+        </main>
+        <!-- <button class="convert-btn">convert</button> -->
+      </section>
+
+      <section class="section2 display-chart-section">
+
+        <div class="items">
+          
+          <button class="chart-area-btn">Area</button>
+
+          <ul class="range-list">
+            <li class="range-list-item" data-time-range ="1m">1 day</li>
+            <li class="range-list-item " data-time-range ="5m"">1 week</li>
+            <li class="range-list-item" data-time-range ="15m">2 week</li>
+            <li class="range-list-item" data-time-range ="30m">1 month</li>
+            <li class="range-list-item" data-time-range ="1hr">2 month</li>
+            <li class="range-list-item" data-time-range ="6hr">3 month</li>
+            <li class="range-list-item" data-time-range ="1day">1 year</li>
+          </ul>
+
+          <div class="field currencies-list">
+            <div class="dropdown chart-dropdown">
+              <div class="dropbtn chart-dropbtn" href="#">
+                <span>btcusd</span>
+              </div>
+  
+              <div data-type="2" class="dropdown-content dropdown-content-chart">
+  
+                <input class="search-box search-currency-chart" placeholder="search..." type="text" autofocus/>
+                
+              </div>
+              </div>
+          </div>
+
+        </div>
+
+        <div class="chartContainer">
+          <canvas id ="chart">
+          </canvas>
+        </div>
+
+      </section>
+
+    </div>
+  </body>
+</html>

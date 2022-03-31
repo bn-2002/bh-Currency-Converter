@@ -1,0 +1,24 @@
+.error-message-container {    
+    color:$white;
+    position: fixed;
+    background-color: #ee6073;
+    padding:1rem 1rem;
+    top:1rem;
+    left:1rem;
+    z-index:1000;
+    border-radius:3px;
+    font-size: 120%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 0fr 1fr;
+    grid-template-rows: 1fr;
+    .close-btn {
+        margin:1rem;
+        cursor: pointer;
+    }
+}
+
+.hidden {
+    display: none;
+}

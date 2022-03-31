@@ -1,0 +1,101 @@
+.section2 {
+  padding: 1rem;
+  background-color: $white;
+  cursor: pointer;
+  height: 100vh;
+
+  .items {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+    width: 90%;
+
+    .chart-area-btn {
+      width: 30%;
+      padding: 0.2rem;
+      align-self: center;
+      justify-self: center;
+      display: grid;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background-color: $white;
+      box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+        rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+    }
+
+    .range-list {
+      display: inline;
+      margin: 0 auto;
+      li {
+        list-style-type: none;
+        display: inline;
+        background-color: $primary-color-hover;
+        color: $white;
+        padding: 0.5rem;
+        border-radius: 0.6rem;
+      }
+      .active-range-time {
+        background-color: $primary-color3;
+      }
+    }
+
+    .dropdown {
+      position: relative;
+      align-items: center;
+      top: 0;
+      justify-content: center;
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+      width: 35% !important;
+      span {
+        text-align: center;
+        display: inline;
+        margin: 0 1rem;
+      }
+
+      .dropbtn {
+        width: 105%;
+        font-size: 1rem;
+        top: 0;
+        left: 0%;
+        padding: 0.2rem;
+
+        &:after {
+          left: 80%;
+        }
+      }
+
+      .dropdown-content {
+        position: absolute;
+        display: none;
+        max-height: 20rem !important;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        .dropdown-content-item {
+          width: auto;
+        }
+      }
+    }
+
+    .currencies-list {
+      width: 110% !important;
+      max-height: 10rem !important;
+
+      img {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+
+  #chart {
+      width:100% !important;
+      height:40rem !important;
+  }
+}

@@ -1,0 +1,162 @@
+@include respond(tab-land) { 
+    .section1 {
+        header {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            .current-date-and-time {
+                font-size: 1.3rem;
+            }   
+        }
+       .currency-converter  {
+            .input-amount-field {
+                width:95% !important;
+                height:1.4rem;
+                padding:0.5rem !important;
+            }
+            .o-field {
+                width:90%;
+                margin-left:11%;
+            }
+
+            .currencies-list {
+                .dropdown {
+                    .dropbtn {
+                        &:after {
+                           left:90% !important;
+                        }
+                    }
+                }
+            }
+       }
+    }
+
+    .section2 {
+        .dropdown-content {
+            width:120%;
+
+        }
+    }
+}
+
+@include respond(tab-port) { 
+    .section1 {
+        header {
+            display: block;
+            .current-date-and-time {
+                font-size: 1.3rem;
+                text-align: center;
+            }   
+        }
+        .currency-converter {
+            display : grid;
+            grid-template-columns: 0.8fr 2.5fr !important;
+            grid-template-rows: 1fr 1fr !important;
+            padding:0rem 0rem 1rem 0rem;
+
+            .i-field {
+                width:130% !important ;
+            }
+
+            .o-field {
+                width:125% !important;    
+            }
+
+            .field { 
+                margin-left:50% !important; 
+        
+            }
+            .currencies-list {
+                width:30% !important;
+                .dropdown {
+                    width:30%;
+                    margin-left:-5%;
+                }
+            }
+    
+        }
+    }
+    .section2 {
+        .dropdown-content {
+            width:6rem;
+            right:-1.65rem;
+        }
+    }
+}
+
+@include respond(phone) {
+    .section1 {
+        margin: 0;
+        .currency-converter {
+            padding: 3rem 0rem!important;
+            display: grid;
+            grid-template-columns: 1fr !important;
+            grid-template-rows: 1fr 1fr 1fr 1fr !important;
+
+            .field { 
+                margin-left:0 !important;
+                width:100%;
+            }    
+            .i-field,.o-field{
+                width:60% !important;
+                margin:0rem auto !important;
+
+            }
+            .input-amount-field {
+                padding:0.6rem !important;
+                height:2rem;
+            }
+
+            .output-amount-field {
+                padding:0.6rem !important;
+                height:1.6rem !important;
+                width:95% !important;
+            }
+            .currencies-list {
+                .dropdown {
+                    width:60.8%;
+                    margin:0 auto !important;
+                    margin-left:19% !important;
+
+                    .dropdown-content {
+                        width:100%;
+                        left:1%;
+                        top:87%;
+                    }
+
+                    .dropbtn {
+                        width: 100%;
+                        top:-1rem !important;
+                        left:0.3rem;
+                        height:3rem;
+                    }
+                }
+            }
+        }
+    }
+    .section2 {
+        .items {
+            font-size: 1.2rem;
+            display: grid;
+            grid-template-columns:6fr !important;
+            grid-template-rows: 1fr 1fr 1fr !important;
+
+            .range-list {
+                display: grid !important;
+                padding:1rem;
+                height: auto;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                width:90%;
+                .range-list-item {
+                    margin:.3rem;
+                    text-align: center;
+                }
+            }
+
+            .dropdown-content {
+                width:110%;
+            }
+        }
+    }
+}
+

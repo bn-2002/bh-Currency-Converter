@@ -1,0 +1,113 @@
+.dropdown {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center; 
+    margin: 1.1rem;
+    font-size: 1rem;
+    color: $secondary-color;
+    width:20%;
+
+    .dropbtn {
+      color:$secondary-color;
+      font-size:1.3rem;
+      cursor: pointer;  
+      border-radius: 0.2rem;
+      border: none;
+      width:110%;
+      height:2.5rem;
+      position: relative;
+      top:.5rem;
+      background-color: $white;
+      text-align: center;
+      align-items: center;
+      display: grid;
+      z-index:10;
+      box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: 1fr;
+
+
+      span {
+        text-align: left;
+        margin-right: 6rem;
+      }
+
+      img {
+        width:2.1rem;
+        height:1.8rem; 
+        display: block;
+        margin-left : 1rem;   
+      }
+
+      &:after {
+        transform: rotate(-45deg);
+        transform-origin: center;
+        content: "";
+        border: 3px solid $primary-color-dark;
+        border-radius: 2px;
+        border-top: 0;
+        border-right: 0;
+        display: block;
+        height: 0.525em;
+        width: 0.525em;
+        z-index: 4;
+        position: absolute;
+        bottom: 35%;
+        left : 91%;
+      }
+  
+      &:not(:hover)::after {
+        border-color: $primary-color-dark;
+      }
+  
+      &:hover::after {
+        border-color: $primary-color-hover;
+      }
+    }
+
+    &-content {
+      z-index:10;
+      top:113%;
+      width:109%;
+      background-color: $white;
+      box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+      max-height: 20rem !important;
+      overflow-y:auto;
+      overflow-x:hidden;
+
+      .search-box {
+        font-size:1.1rem;
+        outline:none !important;
+        border:none !important;
+        padding:0.8rem;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+        width:105%;
+      }
+
+
+      &:hover {
+        cursor: pointer;
+      }
+
+    }
+    
+    &-content div {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+  
+      img {
+        width:2rem;
+        height:1.5rem; 
+         
+      }
+    }
+    
+    &-content div:hover {
+      background-color: #f1f1f1
+    }
+}
