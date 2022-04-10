@@ -2,15 +2,15 @@ import { API_VERSION, BASE_URL, API_URL, KEY } from "./config.js";
 
 export const state = {
   inputAmount: "",
-  inputCurrency: "BTC",        //default valu
+  inputCurrency: "BTC", 
   proportion: "",
   outputAmonut: "",
   outputCurrency: "USD", 
   currencies: [],
   historyPrice: [],
   symbols: [],
-  selectedSymbol: "btcusd", //default value
-  timeRange: "1m", //default value
+  selectedSymbol: "btcusd", 
+  timeRange: "1m",
 };
 
 /**
@@ -109,9 +109,6 @@ export const loadSearchResults = function (query, type) {
   } else if (type === 2) {
     searchResults = state.symbols.filter((curr) => curr.id.startsWith(query));
   }
-  // if (searchResults.length === 0) {
-  //     console.log('there is no currency with this name.');
-  // }
   return searchResults;
 };
 
@@ -123,13 +120,10 @@ export const loadSearchResults = function (query, type) {
 export const gethistoryPrice = async function () {
   try {
     fetch(
-      `https://cors-anywhere.herokuapp.com/${BASE_URL}/${API_VERSION}/candles/${state.selectedSymbol}/${state.timeRange}`,
-      {
-        headers: { "Content-Type": "application/json" },
-      }
+      `${BASE_URL}/${API_VERSION}/candles/${state.selectedSymbol}/${state.timeRange}`,
     )
-      .then((response) => response.json())
-      .then((data) => (state.historyPrice = data));
+      .then( response => response.json())
+      .then( data => state.historyPrice = data);
   } catch (err) {
     throw new Error(err);
   }

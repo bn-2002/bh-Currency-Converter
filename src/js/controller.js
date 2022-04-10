@@ -162,15 +162,12 @@ const init = function () {
   chartView.addHandlerAreaBtn();
 };
 
+console.log('salam');
 init(); 
 
 /*
 TODO
- 2)bable
- 3)chart.js3
- 4)add dark mode.
- 5)shadow chart
- 6)candle
+candle
 */
 
 
