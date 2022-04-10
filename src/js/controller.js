@@ -162,7 +162,6 @@ const init = function () {
   chartView.addHandlerAreaBtn();
 };
 
-console.log('salam');
 init(); 
 
 /*
