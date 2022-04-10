@@ -2,10 +2,10 @@ import { API_VERSION, BASE_URL, API_URL, KEY } from "./config.js";
 
 export const state = {
   inputAmount: "",
-  inputCurrency: "BTC", //default value
+  inputCurrency: "BTC",        //default valu
   proportion: "",
   outputAmonut: "",
-  outputCurrency: "USD", //default value
+  outputCurrency: "USD", 
   currencies: [],
   historyPrice: [],
   symbols: [],
