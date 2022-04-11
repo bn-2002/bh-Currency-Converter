@@ -1,4 +1,4 @@
-import View from "./view";
+import View from "./View";
 import { getTime,getDate } from "../helper";
 
 class ContainerView extends View {

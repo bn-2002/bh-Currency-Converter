@@ -1,5 +1,5 @@
 import { getDate, getTime , getMonth , getDay , getWeekday } from "../helper";
-import View from "./view";
+import View from "./View";
 
 import { Chart,registerables } from 'chart.js';
 Chart.register(...registerables);

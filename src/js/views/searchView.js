@@ -1,5 +1,5 @@
 import { debounce } from "../helper.js";
-import View from "./view.js";
+import View from "./View.js";
 
 const searchInputCurrency = document.querySelector('.search-input-currency')
 const searchOutputCurrency = document.querySelector('.search-output-currency');
