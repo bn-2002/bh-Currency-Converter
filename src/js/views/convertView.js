@@ -1,6 +1,6 @@
 const inputAmountField = document.querySelector('.input-amount-field');
 import { debounce } from "../helper";
-import View from "./view.js";
+import View from "./View.js";
 
 class ConvertView extends View {
   
