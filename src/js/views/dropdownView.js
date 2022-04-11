@@ -6,7 +6,7 @@ const dropdownContent0 = document.querySelector(".dropdown-content-input");
 const dropdownContent1 = document.querySelector(".dropdown-content-output");
 const dropdownContent2 = document.querySelector(".dropdown-content-chart");
 
-import View from "./view.js";
+import View from "./View";
 
 class DropdownView extends View {
   _parentsElements = document.querySelectorAll(".dropdown-content");
