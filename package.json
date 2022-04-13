@@ -10,12 +10,21 @@
   "author": "bahare nikoosiyar",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.4.0",
-    "parcel": "^2.4.0"
+    "@parcel/transformer-sass": "^2.4.1",
+    "parcel": "^2.4.1"
   },
   "dependencies": {
     "chart.js": "^3.7.1",
     "chartjs-chart-error-bars": "^3.7.1",
     "sass": "^1.49.9"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bn-2002/Bh-Currency-Converter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bn-2002/Bh-Currency-Converter/issues"
+  },
+  "homepage": "https://github.com/bn-2002/Bh-Currency-Converter#readme"
 }
