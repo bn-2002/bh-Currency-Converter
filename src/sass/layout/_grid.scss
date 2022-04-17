@@ -29,13 +29,6 @@
             }
        }
     }
-
-    .section2 {
-        .dropdown-content {
-            width:120%;
-
-        }
-    }
 }
 
 @include respond(tab-port) { 
@@ -63,22 +56,13 @@
 
             .field { 
                 margin-left:50% !important; 
-        
             }
             .currencies-list {
                 width:30% !important;
                 .dropdown {
                     width:30%;
-                    margin-left:-5%;
                 }
             }
-    
-        }
-    }
-    .section2 {
-        .dropdown-content {
-            width:6rem;
-            right:-1.65rem;
         }
     }
 }
@@ -152,7 +136,6 @@
                     text-align: center;
                 }
             }
-
             .dropdown-content {
                 width:110%;
             }

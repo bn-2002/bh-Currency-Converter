@@ -5,24 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#15be9d">
-    <!-- Windows Phone -->
     <meta name="msapplication-navbutton-color" content="#15be9d">
-    <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#15be9d">
     <link rel="stylesheet" href="src/sass/main.scss" />
-    <!-- <link rel="stylesheet" href="./css/main.css" /> -->
+    <script defer src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script defer type="module" src="src/js/controller.js"></script>
     <link rel="icon" type="image/x-icon" href="src/images/favicon.png" />
     <title>BH Currency Convereter</title>
   </head>
   <body>
     <div class="container">
-
       <div class="error-message-container hidden">
         <img class="close-btn" alt="" src="https://img.icons8.com/small/16/000000/delete-sign.png"/>
         <span class="error-message">There is might be a problem with your internet connection!</span>
       </div>
-
       <section class="section1 currency-converter-section">
         <header>
           <h1>Use Currency Converter to easily convert currencies.</h1>
@@ -31,93 +27,58 @@
             <p class="current-time">17:31</p>
           </div>
         </header>
-
         <div class="currency-converter">
           <div class="field i-field">
             <span>You Have</span>
             <input class="input-field input-amount-field" value="" type="number" autofocus/>
           </div>
-
           <div class="field currencies-list">
             <div class="dropdown">
               <span></span>
-
               <div class="dropbtn dropbtn-input" href="#">
-                <img
-                  alt=""
-                  src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg"
-                />
+                <img alt="" src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg"/>
                 <span>BTC</span>
               </div>
-
               <div data-type="0" class="dropdown-content dropdown-content-input">
-
                 <input class="search-box search-input-currency" placeholder="search..." type="text" autofocus/>
-
-                <!-- <div class="dropdown-content-item" href="#">
-                <img alt="" src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg">
-                <span>BTC</span>
-                </div> -->
-
-              </div>
+               </div>
             </div>
           </div>
-
           <div class="field o-field">
             <span>You Get</span>
             <div class="input-field output-amount-field result-field">
             </div>
           </div>
-
           <div class="field currencies-list">
             <div class="dropdown">
               <span></span>
-
               <div class="dropbtn dropbtn-output" href="#">
-                <img
-                  alt=""
-                  src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/usdt.svg"
-                />
+                <img alt="" src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/usdt.svg"/>
                 <span>USDT</span>
               </div>
-
               <div data-type="1" class="dropdown-content dropdown-content-output">
-
-                <input
-                  class="search-box search-output-currency"
-                  placeholder="search..."
-                  type="text"
-                  autofocus
-                />
-
-                <!-- <div class="dropdown-content-item" href="#">
-                <img alt="" src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg">
-                <span>BTC</span>
-                </div>   -->
-
+                <input class="search-box search-output-currency" placeholder="search..." type="text" autofocus/>
               </div>
             </div>
           </div>
-
         </main>
       </section>
-
       <section class="section2 display-chart-section">
 
         <div class="items">
           
+          <button class="display-line-chart selected-button">Line chart</button>
+          <button class="display-candle-chart">Candle stick chart</button>
           <button class="chart-area-btn">Area</button>
-
-          <ul class="range-list">
-            <li class="range-list-item" data-time-range ="1m">1 day</li>
-            <li class="range-list-item " data-time-range ="5m"">1 week</li>
-            <li class="range-list-item" data-time-range ="15m">2 week</li>
-            <li class="range-list-item" data-time-range ="30m">1 month</li>
-            <li class="range-list-item" data-time-range ="1hr">2 month</li>
-            <li class="range-list-item" data-time-range ="6hr">3 month</li>
-            <li class="range-list-item" data-time-range ="1day">1 year</li>
-          </ul>
-
+          <div class="range-list">
+            <button class="range-list-item" data-time-range ="1m">1 day</button>
+            <button class="range-list-item " data-time-range ="5m"">1 week</li>
+            <button class="range-list-item" data-time-range ="15m">2 week</button>
+            <button class="range-list-item" data-time-range ="30m">1 month</button>
+            <button class="range-list-item" data-time-range ="1hr">2 month</button>
+            <button class="range-list-item" data-time-range ="6hr">3 month</button>
+            <button class="range-list-item" data-time-range ="1day">1 year</button>
+          </div>
           <div class="field currencies-list">
             <div class="dropdown chart-dropdown">
               <div class="dropbtn chart-dropbtn" href="#">
@@ -131,15 +92,16 @@
               </div>
               </div>
           </div>
-
         </div>
 
         <div class="chartContainer">
-          <canvas id ="chart">
-          </canvas>
+          <div class="lineChartContainer">
+            <canvas id ="chart"></canvas>
+          </div>
+          <div class="candleChart" id="candle-chart"></div>  
         </div>
-        <a class="attribution" href="https://nomics.com">Crypto Market Cap & Pricing Data Provided By Nomics</a>
       </section>
     </div>
+    <a class="attribution" href="https://nomics.com">Crypto Market Cap & Pricing Data Provided By Nomics</a> 
   </body>
 </html>

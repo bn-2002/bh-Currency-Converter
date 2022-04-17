@@ -1,5 +1,4 @@
 import View from "./View";
-import { getTime,getDate } from "../helper";
 
 class ContainerView extends View {
 
@@ -10,14 +9,14 @@ class ContainerView extends View {
     renderEror(err) {
         this.erorMessage.textContent = err;
         this.erorMessageContainer.classList.remove('hidden');
-      }
+    }
     
-      addErrorHandler() {
+    addErrorHandler() {
         const that = this;
         this.closeBtn.addEventListener('click',function() {
             that.erorMessageContainer.classList.add('hidden');
         })
-      }
+    }
     
 }
 

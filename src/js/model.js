@@ -13,12 +13,6 @@ export const state = {
   timeRange: "1m",
 };
 
-/**
- * Calculate and sets model.state.outputAmount.
- * @function calcOutputAmonut
- * @param {Number} inputAmount the number that given by user.
- * @returns {undefined}
- */
 export const calcOutputAmonut = async function (inputAmount) {
   try {
     await fetch(
@@ -36,11 +30,6 @@ export const calcOutputAmonut = async function (inputAmount) {
   }
 };
 
-/**
- * Load all currencies available and sets currencies array.
- * @function loadCurrencies
- * @returns {undefined}
- */
 export const loadCurrencies = async function () {
   try {
     await fetch(`${API_URL}ticker?key=${KEY}`)
@@ -60,13 +49,6 @@ export const loadCurrencies = async function () {
   }
 };
 
-/**
- * Search for selected currency data {id,price(USD),logoURl}.
- * @function getSelectedCurrency
- * @param {Number} id id of selected currency
- * @param {Number} type of dropdown ? input dropdown (0)|| output dropdown (1) || chart dropdown (2)
- * @returns {object} currency instance
- */
 export const getSelectedCurrency = function (id, type) {
   //Search for selected currency in state array
   if (type === 0 || type === 1) {
@@ -93,13 +75,6 @@ export const getSelectedCurrency = function (id, type) {
   }
 };
 
-/**
- * Search for results based on query
- * @function loadSearchResults
- * @param {string}  : query
- * @param {Number} type of dropdown ? input dropdown (0)|| output dropdown (1) || chart dropdown (2)
- * @returns {object[]} {array of search results objects(currencies)}
- */
 export const loadSearchResults = function (query, type) {
   let searchResults;
   if (type === 0 || type === 1) {
@@ -112,11 +87,6 @@ export const loadSearchResults = function (query, type) {
   return searchResults;
 };
 
-/**
- * Get history of prices of a currency.
- * @function gethistoryPrice
- * @returns {undefined}
- */
 export const gethistoryPrice = async function () {
   try {
     fetch(
@@ -129,11 +99,6 @@ export const gethistoryPrice = async function () {
   }
 };
 
-/**
- * Get symbols of currencies from genemi api
- * @function getSymbols
- * @returns {undefined}
- */
 export const getSymbols = async function () {
   try {
     await fetch(`${BASE_URL}/v1/symbols`)

@@ -5,16 +5,15 @@
   height: 100vh;
 
   .items {
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 1fr;
-    align-items: center;
-    justify-content: center;
     margin: 2rem auto;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    flex-wrap: wrap;
     width: 90%;
 
-    .chart-area-btn {
-      width: 30%;
+
+    button {
       padding: 0.2rem;
       align-self: center;
       justify-self: center;
@@ -22,21 +21,19 @@
       border: none;
       outline: none;
       cursor: pointer;
-      background-color: $white;
-      box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
-        rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-    }
+      background-color: $primary-color-hover;
+      color: $white;
+      margin:0.5rem;
+      padding: 0.8rem;
+      border-radius: 0.6rem;
+  }
 
     .range-list {
       display: inline;
       margin: 0 auto;
-      li {
-        list-style-type: none;
+      button {
         display: inline;
-        background-color: $primary-color-hover;
-        color: $white;
-        padding: 0.5rem;
-        border-radius: 0.6rem;
+        margin:0.2rem;
       }
       .active-range-time {
         background-color: $primary-color3;
@@ -52,10 +49,12 @@
       grid-template-rows: 1fr;
       grid-template-columns: 1fr;
       width: 35% !important;
+      font-size: 1.1rem;
       span {
         text-align: center;
         display: inline;
         margin: 0 1rem;
+        font-size: 1.1rem;
       }
 
       .dropbtn {
@@ -84,7 +83,7 @@
     }
 
     .currencies-list {
-      width: 110% !important;
+      // width: 110% !important;
       max-height: 10rem !important;
 
       img {
@@ -98,4 +97,27 @@
       width:100% !important;
       height:40rem !important;
   }
+
+  .selected-button {
+    background-color: $primary-color3 !important;
+  }
+
+  .candleChart {
+    position: absolute;
+    width:100%;
+    top:0;
+    left:0;
+  }
+
+
+  .chartContainer {
+    position: relative;
+  }
+
+  .hidden {
+    display:none;
+    visibility: 0;
+    transition: all ease 0.5s;
+  }
+
 }

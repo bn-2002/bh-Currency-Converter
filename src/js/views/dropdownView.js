@@ -11,13 +11,6 @@ import View from "./View";
 class DropdownView extends View {
   _parentsElements = document.querySelectorAll(".dropdown-content");
 
-/**
-   * Generate markup
-   * @function DropdownView._clear
-   * @param {String} currency 
-   * @param {Number} type of dropdown ? input dropdown (0)|| output dropdown (1) || chart dropdown (2)
-   * @returns {String} html markup
-*/
   _generateMarkup(currency,type = 0) {
     if (type===0 || type===1) {
       return `
@@ -36,14 +29,6 @@ class DropdownView extends View {
   }
   }
 
-/**
-   * Update dropdown content according to searched results
-   * @function DropdownView._update
-   * @param {Array} data
-   * @param {Element} dropdownContent
-   * @param {Number} type of dropdown ? input dropdown (0)|| output dropdown (1) || chart dropdown (2)
-   * @returns {undefined}
-*/
   _update(data,dropdownContent,type) {
     this._clear(dropdownContent);
     if (data) {
@@ -51,12 +36,6 @@ class DropdownView extends View {
     }
   }
 
-  /**
-   * Clear dropdown content
-   * @function DropdownView._clear
-   * @param {Element} parent
-   * @returns {undefined}
-*/
   _clear(parent) {
     const items = parent.querySelectorAll(".dropdown-content-item");
     if (!items) return;
@@ -65,14 +44,6 @@ class DropdownView extends View {
     });
   }
 
-  /**
-   * Set selected item at dropBtn.
-   * @function DropdownView._setdropBtnCurrency
-   * @param {Element} dropBtn
-   * @param {String} currency
-   * @param {Number} type of dropdown ? input dropdown (0)|| output dropdown (1) || chart dropdown (2)
-   * @returns {undefined}
-*/
   _setdropBtnCurrency(dropBtn,currency,type = 0) {
     if (type === 2) {
       dropBtn.children[0].textContent = currency.id;
@@ -82,24 +53,10 @@ class DropdownView extends View {
     }
   }
 
-/**
-   * Add handler to dropdown to load dropdown content items while pages loads.
-   * @function DropdownView.addHandlerLoadDropdown
-   * @param {function} handler 
-   * @returns {undefined}
-*/
   addHandlerLoadDropdown(handler) {
     window.addEventListener("load", handler);
   }
 
-  /**
-   * Render dropdown items
-   * @function DropdownView.addHandlerLoadDropdown
-   * @param {Array} data
-   * @param {Element} dropdownContent
-   * @param {Number} type of dropdown ? input dropdown (0)|| output dropdown (1) || chart dropdown (2)
-   * @returns {undefined}
-*/
   renderDropdown(data,dropdownContent,type) {
     data.forEach((currency) => {
       let markup;
@@ -113,14 +70,6 @@ class DropdownView extends View {
     });
   }
 
-  /**
-   * Render dropdown items and update
-   * @function DropdownView.render
-   * @param {Array} data
-   * @param {Boolean} search dropdown is updating by searched results ? true : false
-   * @param {Number} type of dropdown ? input dropdown (0)|| output dropdown (1) || chart dropdown (2)
-   * @returns {undefined}
-*/
   render(data,type,search=false) {
     if (search && type === 0) {
       //For input dropdown
@@ -143,12 +92,6 @@ class DropdownView extends View {
     }
   }
 
-/**
-   * Get selected item data after clicking
-   * @function DropdownView.render
-   * @param {function} handler 
-   * @returns {undefined}
-*/
   addHandlerDropdownItem(handler) {
     dropdownContents.forEach((dropdownContent, index) => {//index == type of dropdown
       dropdownContent.addEventListener("click", function (e) {
@@ -160,13 +103,6 @@ class DropdownView extends View {
     });
   }
 
-/**
-   * Render selected currency and display it
-   * @function DropdownView.renderSelectedCurrency
-   * @param {String} currency
-   * @param {Number} type of dropdown ? input dropdown (0)|| output dropdown (1) || chart dropdown (2)
-   * @returns {undefined}
-*/
   renderSelectedCurrency(currency,type) {
     switch (type) {
       case 0: {
@@ -186,13 +122,6 @@ class DropdownView extends View {
     }
   }
 
-/**
-   * change display of dropdown
-   * @function DropdownView.displayDropdown
-   * @param {Element} dropBtn
-   * @param {Element} dropdown
-   * @returns {undefined}
-*/
   displayDropdown(dropBtn,dropdown) {
     dropBtn.addEventListener("click", function () {
       if (dropdown.style.display === "none") {
@@ -203,24 +132,14 @@ class DropdownView extends View {
     });
   }
 
-/**
-   * add handler to hide or display dropdown
-   * @function DropdownView.ddHandlerDisplayDropdown
-   * @returns {undefined}
-*/
   addHandlerDisplayDropdown() {
     this.displayDropdown(dropBtn0, dropdownContent0);
     this.displayDropdown(dropBtn1, dropdownContent1);
     this.displayDropdown(dropBtn2,dropdownContent2);
   }
 
-/**
-   * close dropdown
-   * @function DropdownView.close
-   * @param {Number} type of dropdown ? input dropdown (0)|| output dropdown (1) || chart dropdown (2)
-   * @returns {undefined}
-*/
   close(type) {
+    // input dropdown (0)|| output dropdown (1) || chart dropdown (2)
     if (type === 0) dropdownContent0.style.display = "none";
     if (type === 1) dropdownContent1.style.display = "none";
     if (type === 2) dropdownContent2.style.display = "none";

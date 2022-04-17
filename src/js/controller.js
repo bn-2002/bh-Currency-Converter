@@ -6,15 +6,11 @@ import chartView from "./views/chartView.js";
 import containerView from "./views/containerView.js";
 import { updateDateAndTime } from "./helper.js";
 
+
 if (module.hot) {
   module.hot.accept();
 }
 
-/**
- * Load dropdown according to currencies.
- * @function controlLoadDropdown
- * @returns {undefined}
- */
 const controlLoadDropdown = async function () {
   try {
     //Load currencies data.
@@ -35,13 +31,6 @@ const controlLoadDropdown = async function () {
   }
 };
 
-/**
- * Control converter currency.
- * It converts two currency to each other.
- * calculation part.
- * @function controlConverter
- * @returns {undefined}
- */
 const controlConverter = async function () {
   try {
 
@@ -59,19 +48,12 @@ const controlConverter = async function () {
     //Render and display output feild.
     convertView.render(model.state.outputAmonut);
 
+
   } catch (err) {
     containerView.renderEror(err);
   }
 };
 
-/**
- * Control dropDown to choose currency.
- * Sets model.state.
- * @function controlSelectedItem
- * @param {Number} : selected surrency id.
- * @param {Number} type of dropdown ? input dropdown (0)|| output dropdown (1) || chart dropdown (2)
- * @returns {undefined}
- */
 const controlSelectedItem = function (id,type) {
   //Search for selected currency data.
   const currency = model.getSelectedCurrency(id,type);
@@ -101,13 +83,6 @@ const controlSelectedItem = function (id,type) {
   }
 };
 
-/**
- * Control search results based on query.
- * @function controlSearchResults
- * @param {string} : query (example : XRP)
- * @param {Number} type of dropdown ? input dropdown (0)|| output dropdown (1) || chart dropdown (2)
- * @returns {undefined}
- */
 const controlSearchResults = function (query,type) {
   //Load search results according to query.
   const searchResults = model.loadSearchResults(query, type);
@@ -117,13 +92,6 @@ const controlSearchResults = function (query,type) {
 
 };
 
-/**
- * Control chart according to price history.
- * @function controlChart
- * @param {String} timeRange (1day,6hr,3hr,1hr,...)
- * @param {String} symbol (btnusd,...)
- * @returns {undefined}
- */
 const controlChart = async function (timeRange,symbol) {
   try {
     if (timeRange) model.state.timeRange = timeRange;
@@ -136,7 +104,8 @@ const controlChart = async function (timeRange,symbol) {
     chartView.setChartDetails(model.state.historyPrice,model.state.timeRange);
 
     //render chart and display it
-    chartView.renderChart(chartView.labels,chartView.data);
+    chartView.renderChart(chartView.labels,chartView.data,model.state.historyPrice);
+
   }
      catch(err) {
       containerView.renderEror('there might be a problem.Try again.')
@@ -144,12 +113,6 @@ const controlChart = async function (timeRange,symbol) {
      }
 }
 
-/**
- * run app
- * @function init
- * @returns {undefined}
- * @author {bahareni1}
- */
 const init = function () {
   updateDateAndTime();
   containerView.addErrorHandler();
@@ -158,16 +121,9 @@ const init = function () {
   dropdownView.addHandlerDisplayDropdown();
   dropdownView.addHandlerDropdownItem(controlSelectedItem);
   searchView.addHandlerKeyup(controlSearchResults);
+  chartView.addHandlerChartType(controlChart);
   chartView.addChartHandler(controlChart);
   chartView.addHandlerAreaBtn();
 };
 
 init(); 
-
-/*
-TODO
-candle
-*/
-
-
-

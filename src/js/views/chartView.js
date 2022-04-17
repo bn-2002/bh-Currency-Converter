@@ -1,27 +1,27 @@
 import { getDate, getTime , getMonth , getDay , getWeekday } from "../helper";
 import View from "./View";
-
 import { Chart,registerables } from 'chart.js';
 Chart.register(...registerables);
 
 const rangeList = document.querySelector(".range-list");
+const lineChartContainer = document.querySelector('.lineChartContainer');
 const chart = document.getElementById("chart").getContext('2d');
+const candleChart = document.getElementById("candle-chart");
 const displayAreaBtn = document.querySelector('.chart-area-btn');
+const dispalyLineChartBtn = document.querySelector('.display-line-chart');
+const dispalyCandleChartBtn = document.querySelector('.display-candle-chart');
+
 let tooltips = [];
 
 class ChartView extends View {
   
+  chartType = 'linechart';
+  candleChartData = [];
   lineChart;
+  stockChart;
   data = [];
   labels = [];
 
-/**
-   * Highlight selected range item 
-   * @function ChartView.addChartHandler
-   * @param {function} handler
-   * @returns {undefined}
-   * 
-*/
   addChartHandler(handler) {
     rangeList.addEventListener("click", function (e) {
       for(let range of rangeList.children) {
@@ -35,116 +35,99 @@ class ChartView extends View {
     });
   }
 
-/**
-   * update chart line
-   * @function ChartView._updateChart
-   * @param {Array} labels
-   * @param {Array} data
-   * @param {Array} tooltipsArr
-   * @returns {undefined}
-   * 
-*/
-  _updateChart(labels,data,tooltipsArr) {
+  _updateLineChart(labels,data,tooltipsArr) {
     this.lineChart.data.datasets[0].data = data;
     this.lineChart.data.labels = labels;
     tooltips = tooltipsArr;
     this.lineChart.update();
   }
 
-/**
-   * clear chart data
-   * @function ChartView._clearChartData
-   * @returns {undefined}
-   * 
-*/
   _clearChartData() {
     this.data = [];
     this.labels = [];
     tooltips = [];
   } 
 
-/**
-   * Render Chart (initialize or update)
-   * @function ChartView.renderChart
-   * @param {Array} labels
-   * @param {Array} data
-   * @returns {undefined}
-   * 
-*/
-  renderChart(labels,data) {
-    //Initialize chart line because this.lineChart hasn`t been defined yet.(for first time)
-    if (typeof this.lineChart === 'undefined') {
-      this.lineChart = new Chart(chart,{
-        type: 'line',
-        data: {
-            labels:labels,
-            datasets: [{
-              label: "price",
-              fill:false,
-              backgroundColor :"#15be9d",
-              strokeColor: "brown",
-              lineTension: 0.2,
-              borderColor: "#15be9d",
-              borderCapStyle: "butt",
-              borderDash: [],
-              borderDashOffset: 0.0,
-              borderJoinStyle: "miter",
-              pointHoverBorderColor: "#15be9d",
-              pointHoverBackgroundColor : "#15be9d",
-              pointBorderWidth: 1,
-              pointHoverRadius: 5,
-              pointRadius: 1,
-              pointHitRadius: 10,
-              data: data,
-            }]
-        },
-        options: {
-            responsive : true,
-            maintainAspectRatio: false,
-            scales: {  
-                y : {
-                  position : 'left',
-                  ticks :{
-                    color: 'black',
-                  }
-                },
-                x :{
-                  reverse:true,
-                  position : 'right',
-                    ticks : {
-                      color: 'black',
-                        autoSkip : true,
-                        maxTicksLimit : 12,
-                    }
-                }
-            },
-            plugins : {
-              tooltip : {
-                callbacks : {
-                  title : function(context) {
-                      return `${tooltips[context[0].dataIndex]}`;
-                  }
+  _renderLineChart(labels,data) {
+    this.lineChart = new Chart(chart,{
+      type: 'line',
+      data: {
+          labels:labels,
+          datasets: [{
+            label: "price",
+            fill:false,
+            backgroundColor :"#15be9d",
+            strokeColor: "brown",
+            lineTension: 0.2,
+            borderColor: "#15be9d",
+            borderCapStyle: "butt",
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: "miter",
+            pointHoverBorderColor: "#15be9d",
+            pointHoverBackgroundColor : "#15be9d",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: data,
+          }]
+      },
+      options: {
+          responsive : true,
+          maintainAspectRatio: false,
+          scales: {  
+              y : {
+                position : 'left',
+                ticks :{
+                  color: 'black',
                 }
               },
+              x :{
+                reverse:true,
+                position : 'right',
+                  ticks : {
+                    color: 'black',
+                      autoSkip : true,
+                      maxTicksLimit : 12,
+                  }
+              }
+          },
+          plugins : {
+            tooltip : {
+              callbacks : {
+                title : function(context) {
+                    return `${tooltips[context[0].dataIndex]}`;
+                }
+              }
             },
-        },
+          },
+      },
     })
-    }
-    //update chart`s data.
-    else {
-      this._updateChart(this.labels,this.data,tooltips);
-    }
-    return this.lineChart;
   }
 
-/**
-   * Set x and y scales
-   * @function ChartView.setChartDetails
-   * @param {Array} historyPrice
-   * @param {String} timerange
-   * @returns {undefined}
-   * 
-*/
+  renderChart(labels,data,historyPrice) {
+    if (this.chartType === 'linechart') {
+      candleChart.classList.add('hidden');
+      lineChartContainer.classList.remove('hidden');
+      if (typeof this.lineChart === 'undefined') {
+        this._renderLineChart(labels,data);
+        } else if (typeof this.lineChart !== 'undefined') {
+          this._updateLineChart(this.labels,this.data,tooltips);
+        }
+    }
+
+    if (this.chartType === 'candlechart') {
+      lineChartContainer.classList.add('hidden');
+      candleChart.classList.remove('hidden');
+        if (typeof this.stockChart === 'undefined') {
+          this._renderCandleChart(historyPrice);
+        } else if (typeof this.stockChart !== 'undefined') {
+          this._updateCandleChart(historyPrice);
+        }
+      }
+  }
+
   setChartDetails(historyPrice,timerange) {
     this._clearChartData();
     historyPrice.forEach((info) => {
@@ -166,26 +149,90 @@ class ChartView extends View {
     });
   }
 
-/**
-   * add handler to btn (show area)
-   * @function ChartView.addHandlerAreaBtn
-   * @returns {undefined}
-   * 
-*/
   addHandlerAreaBtn() {
     const that = this;
-    if (typeof that.lineChart) {
+    if (typeof that.lineChart && this.chartType === 'linechart') {
       displayAreaBtn.addEventListener('click',function() {
         if (typeof that.lineChart) {
           if (!that.lineChart.data.datasets[0].fill) {
             that.lineChart.data.datasets[0].backgroundColor =  "#15be9d";
             that.lineChart.data.datasets[0].fill = true;
+            displayAreaBtn.classList.add('selected-button');
           } else {
             that.lineChart.data.datasets[0].fill = false;
+            displayAreaBtn.classList.remove('selected-button');
            }
           that.lineChart.update();
           }
       })}
+  }
+
+  _getOptions(array) {
+    this.candleChartData = [];
+    array.forEach(data => {
+        const obj = {
+            x : new Date(data[0]),
+            y : [data[1],data[2],data[3],data[4]]
+        }
+        this.candleChartData.push(obj);
+    })
+  }
+
+  _renderCandleChart(history) {
+
+    this._getOptions(history);
+  
+    const options = {
+        series: [{
+        data : this.candleChartData,
+      }],
+        chart: {
+        type: 'candlestick',
+        height: 560
+      },
+      title: {
+        align: 'left'
+      },
+      xaxis: {
+        type: 'datetime'
+      },
+      yaxis: {
+        tooltip: {
+          enabled: true
+        }
+      }
+    };
+    
+    this.stockChart = new ApexCharts(candleChart,options);
+    this.stockChart.render();
+  }
+
+  _updateCandleChart(history) {
+    
+    this._getOptions(history);
+
+    this.stockChart.updateOptions({
+      series: [{
+        data: this.candleChartData,
+      }],
+    })
+  }
+
+  addHandlerChartType(handler) {
+    const that = this;
+    dispalyCandleChartBtn.addEventListener('click',function() {
+      that.chartType = 'candlechart';
+      dispalyLineChartBtn.classList.remove('selected-button');
+      dispalyCandleChartBtn.classList.add('selected-button');
+      handler();
+    });
+
+    dispalyLineChartBtn.addEventListener('click',function() {
+      that.chartType = 'linechart';
+      dispalyLineChartBtn.classList.add('selected-button');
+      dispalyCandleChartBtn.classList.remove('selected-button');
+      handler();
+    })
   }
 }
 

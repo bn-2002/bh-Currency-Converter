@@ -1,4 +1,3 @@
-// export const KEY = `f46ff6a4307b3e8e945181d6a62553af62705cf5`;
 export const API_URL = `https://api.nomics.com/v1/currencies/`;
 export const KEY = `4364245141d9bf68a39daaecb0fa293bd54b24dc`;
 
