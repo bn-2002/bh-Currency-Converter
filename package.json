@@ -9,6 +9,10 @@
   },
   "author": "bahare nikoosiyar",
   "license": "ISC",
+    "main": "unrelated.js",
+    "targets": {
+      "main": false
+    },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.4.1",
     "parcel": "^2.4.1"
